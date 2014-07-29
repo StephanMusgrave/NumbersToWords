@@ -30,4 +30,8 @@ describe Words do
     expect(Words.convert(99)).to eq('ninety nine')
   end
 
+  it 'should be able to convert 100 to one hundred' do
+    expect(Words.convert(100)).to eq('one hundred')
+  end
+
 end

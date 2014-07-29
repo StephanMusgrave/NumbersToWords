@@ -15,11 +15,14 @@ class Words
     ones = number % 10
     separator = " "
     case
-      when number < 20
-        word << ONESANDTEENS[number]
+      when number >= 100
+        word << ONESANDTEENS[number/100] + " hundred"
+
       when number >= 20
         word << TENS[tens]
         word << (separator + ONESANDTEENS[ones]) if ones > 0
+      when number < 20
+        word << ONESANDTEENS[number]
 
       else
         word = "error"
@@ -28,3 +31,5 @@ class Words
   end
 
 end
+
+(1..100).each {|num| puts Words.convert(num)}
