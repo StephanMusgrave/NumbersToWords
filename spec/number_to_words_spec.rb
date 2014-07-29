@@ -18,5 +18,9 @@ describe Words do
     expect(Words.convert(20)).to eq('twenty')
   end
 
+  it 'should be able to convert 90 to ninety' do
+    expect(Words.convert(90)).to eq('ninety')
+  end
+
 
 end
