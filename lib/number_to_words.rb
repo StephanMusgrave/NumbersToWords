@@ -11,8 +11,14 @@ class Words
   
   def self.convert(number)
     word = ""
-    word = ONESANDTEENS[number]
-
+    case number
+      when number < 20
+        word = ONESANDTEENS[number]
+      when number >= 20
+        word = TENS[number]
+      else
+        word = "error"
+    end
     word
   end
 

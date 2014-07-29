@@ -10,4 +10,13 @@ describe Words do
     expect(Words.convert(2)).to eq('two')
   end
 
+  it 'should be able to convert 19 to nineteen' do
+    expect(Words.convert(19)).to eq('nineteen')
+  end
+
+  it 'should be able to convert 20 to twenty' do
+    expect(Words.convert(20)).to eq('twenty')
+  end
+
+
 end
