@@ -1,3 +1,0 @@
-describe Words do
-
-end
