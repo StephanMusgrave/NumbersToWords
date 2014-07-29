@@ -11,11 +11,16 @@ class Words
   
   def self.convert(number)
     word = ""
+    tens = number - (number % 10)
+    ones = number % 10
+    separator = " "
     case
       when number < 20
-        word = ONESANDTEENS[number]
+        word << ONESANDTEENS[number]
       when number >= 20
-        word = TENS[number]
+        word << TENS[tens]
+        word << (separator + ONESANDTEENS[ones]) if ones > 0
+
       else
         word = "error"
     end

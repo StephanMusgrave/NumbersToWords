@@ -22,5 +22,12 @@ describe Words do
     expect(Words.convert(90)).to eq('ninety')
   end
 
+  it 'should be able to convert 23 to twenty three' do
+    expect(Words.convert(23)).to eq('twenty three')
+  end
+
+  it 'should be able to convert 99 to ninety nine' do
+    expect(Words.convert(99)).to eq('ninety nine')
+  end
 
 end
