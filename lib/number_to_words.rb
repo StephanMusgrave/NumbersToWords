@@ -10,8 +10,13 @@ class Words
             50 => "fifty", 40 => "fourty", 30 => "thirty", 20 => "twenty"}
   
   def self.ones(number)
-    check = UNIQUES[number]
-    check
+    word_number = UNIQUES[number]
+    word_number
+  end
+
+  def self.teens(number)
+    word_number = UNIQUES[number]
+    word_number
   end
 
   def self.convert(number)
@@ -22,11 +27,12 @@ class Words
     case
       when number >= 100
         word << UNIQUES[number/100] + " hundred"
-
       when number >= 20
         word << TENS[tens]
         word << (separator + UNIQUES[ones]) if ones > 0
-      when number < 20
+      when number >= 10
+        word << teens(number)
+      when number < 10
         word << ones(number)
 
       else
