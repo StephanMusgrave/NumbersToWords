@@ -46,21 +46,23 @@ class Words
     @hundreds = (number%1000)/100
     @tens = ((number%1000)%100)/10
     @units = ((number%1000)%100)%10
-    print number,@separator,@thousands,@separator,@hundreds,@separator,@tens,@separator,@units
+    # print number,@separator,@thousands,@separator,@hundreds,@separator,@tens,@separator,@units
   end
   
   def self.convert(number)
     result = ""
+    split(number)
     case
+      when number > 1000
       when number >= 100
-        result << hundreds(number)
-        # result << UNIQUES[number/100] + " hundred"
+        result += UNIQUES[@hundreds] + " hundred"
       when number >= 20
-        result << tens(number)
+        result += UNIQUES[@tens * 10]
+        result += (@separator + UNIQUES[@units]) if @units > 0
       when number >= 10
-        result << teens(number)
+        result += UNIQUES[number]
       when number > 0
-        result << ones(number)
+        result += UNIQUES[number]
       else
         result = "error"
     end
@@ -89,4 +91,4 @@ end
 
 # Uncomment line below to run program:
  # (1..150).each {|num| puts Words.convert(num)}
-(1..12345).each {|num| puts Words.split(num)}
+(1..123).each {|num| puts Words.convert(num)}
