@@ -33,8 +33,12 @@ describe Words do
   it 'should be able to convert 100 to one hundred' do
     expect(Words.convert(100)).to eq('one hundred')
   end
+  
+  it 'should be able to convert 900 to nine hundred' do
+    expect(Words.convert(900)).to eq('nine hundred')
+  end
 
-  xit 'should be able to convert 101 to one hundred and 1' do
+  it 'should be able to convert 101 to one hundred and 1' do
     expect(Words.convert(100)).to eq('one hundred and 1')
   end
 
