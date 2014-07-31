@@ -56,6 +56,8 @@ class Words
       when number > 1000
       when number >= 100
         result += UNIQUES[@hundreds] + " hundred"
+        result += UNIQUES[@tens * 10] if @tens > 2
+        result += (" and " + UNIQUES[@units]) if @units > 0
       when number >= 20
         result += UNIQUES[@tens * 10]
         result += (@separator + UNIQUES[@units]) if @units > 0
@@ -69,23 +71,7 @@ class Words
     result
   end
 
-  # def self.convert(number)
-  #   result = ""
-  #   case
-  #     when number >= 100
-  #       result << hundreds(number)
-  #       # result << UNIQUES[number/100] + " hundred"
-  #     when number >= 20
-  #       result << tens(number)
-  #     when number >= 10
-  #       result << teens(number)
-  #     when number > 0
-  #       result << ones(number)
-  #     else
-  #       result = "error"
-  #   end
-  #   result
-  # end
+  
 
 end
 
