@@ -22,15 +22,10 @@ class Words
   end
 
   def self.tens(number)
-    puts: puts "start self.tens"
-    puts number
-    word_number = UNIQUES[number - (number % 10)]
-    puts "tens:", word_number
-    puts UNIQUES[number % 10]
-    word_number << (@separator + UNIQUES[number % 10]) if (number % 10) > 0
-    puts word_number
-    puts "end self.tens"
-    # word_number << (@separator + ones(number % 10)) if (number % 10) > 0
+    word_number = ""
+    word_number.clear
+    word_number += UNIQUES[number - (number % 10)]
+    word_number << (@separator + ones(number % 10)) if (number % 10) > 0
     word_number
   end
 
@@ -38,26 +33,26 @@ class Words
   end
 
   def self.convert(number)
-    word = ""
+    result = ""
+    result.clear
     case
       when number >= 100
-        word << UNIQUES[number/100] + " hundred"
+        result << UNIQUES[number/100] + " hundred"
       when number >= 20
-        word << tens(number)
+        result << tens(number)
       when number >= 10
-        word << teens(number)
+        result << teens(number)
       when number > 0
-        word << ones(number)
+        result << ones(number)
       else
-        word = "error"
+        result = "error"
     end
 
-    word
+    result
   end
 
 end
 
 # Uncomment line below to run program:
-(1..33).each {|num| puts Words.convert(num)}
-# (1..1000000).each {|num| puts returns_number_in_words(num) }
+# (1..100).each {|num| puts Words.convert(num)}
 
