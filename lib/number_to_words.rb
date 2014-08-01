@@ -39,9 +39,9 @@ class Words
     word_number += UNIQUES[@hundreds] + " hundred"
     word_number += " and " if (@tens+@units) > 0
     word_number += UNIQUES[@tens*10] if @tens >= 2
+    word_number += teens(@units+10) if @tens >= 1 && @tens < 2
     word_number += @separator if @tens >=2 && @units > 0
-    word_number += (units(@units)) if @units > 0
-
+    word_number += (units(@units)) if @units > 0 && (@tens < 1 || @tens >= 2)
     word_number
   end
 
