@@ -15,7 +15,7 @@ class Words
   @tens       = 0
   @units      = 0
   
-  def self.ones(number)
+  def self.units(number)
     word_number = ""
     word_number += UNIQUES[number]
     word_number
@@ -29,15 +29,19 @@ class Words
 
   def self.tens(number)
     word_number = ""
-    word_number += UNIQUES[number - (number % 10)]
-    word_number += (@separator + ones(number % 10)) if (number % 10) > 0
+    word_number += UNIQUES[number]
+    word_number += (@separator + units(@units)) if @units > 0
     word_number
   end
 
   def self.hundreds(number)
     word_number = ""
-    word_number += (ones(number/100) + " hundred")
-    word_number += (@separator + ones(number % 100)) if (number % 100) > 0
+    word_number += UNIQUES[@hundreds] + " hundred"
+    word_number += " and " if (@tens+@units) > 0
+    word_number += UNIQUES[@tens*10] if @tens >= 2
+    word_number += @separator if @tens >=2 && @units > 0
+    word_number += (units(@units)) if @units > 0
+
     word_number
   end
 
@@ -55,16 +59,13 @@ class Words
     case
       when number > 1000
       when number >= 100
-        result += UNIQUES[@hundreds] + " hundred"
-        result += UNIQUES[@tens * 10] if @tens > 2
-        result += (" and " + UNIQUES[@units]) if @units > 0
+        result += hundreds(@hundreds)
       when number >= 20
-        result += UNIQUES[@tens * 10]
-        result += (@separator + UNIQUES[@units]) if @units > 0
+        result += tens(@tens*10)
       when number >= 10
-        result += UNIQUES[number]
+        result += teens(@units+10)
       when number > 0
-        result += UNIQUES[number]
+        result += units(@units)
       else
         result = "error"
     end

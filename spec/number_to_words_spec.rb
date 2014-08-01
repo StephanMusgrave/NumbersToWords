@@ -46,10 +46,16 @@ describe Words do
     expect(Words.convert(120)).to eq('one hundred and twenty')
   end
 
+  it 'should be able to convert 123 to one hundred and twenty three' do
+    expect(Words.convert(123)).to eq('one hundred and twenty three')
+  end
 
   it 'should be able to convert 900 to nine hundred' do
     expect(Words.convert(900)).to eq('nine hundred')
   end
 
+  it 'should be able to convert 999 to nine hundred and ninety nine' do
+    expect(Words.convert(999)).to eq('nine hundred and ninety nine')
+  end
   
 end
